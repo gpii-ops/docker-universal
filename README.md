@@ -16,6 +16,6 @@ In order to build an image the Universal repository working directory should exi
 
 ### Download using either of the following commands:
 
-    docker pull gpii/univeral
+    docker pull gpii/universal
 
-    docker pull gpii/univeral:<first seven characters of a git commit hash>
+    docker pull gpii/universal:<first seven characters of a git commit hash>
