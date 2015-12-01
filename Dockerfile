@@ -7,5 +7,3 @@ COPY ansible/* /etc/ansible/playbooks/
 RUN ansible-playbook build.yml --tags "configure"
 
 CMD ["/bin/bash"]
-
-CMD ["/bin/bash"]
