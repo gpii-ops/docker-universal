@@ -1,21 +1,9 @@
-FROM inclusivedesign/nodejs:0.10.33
+FROM inclusivedesign/nodejs:0.10.36
 
-RUN yum -y install git && \
-    yum clean all
+WORKDIR /etc/ansible/playbooks
 
-RUN mkdir -p /opt/universal
+COPY ansible/* /etc/ansible/playbooks/
 
-# Reduce the number of times 'npm install' is run by copying package.json
-# first and the remaining repository contents later
-COPY universal/package.json /opt/universal/
-
-WORKDIR /opt/universal
-
-RUN npm install
-
-COPY universal/. /opt/universal/
-
-RUN npm -g install grunt-cli && \
-    grunt dedupe-infusion
+RUN ansible-playbook build.yml --tags "configure"
 
 CMD ["/bin/bash"]
